@@ -1,5 +1,6 @@
 # Aeroweather lookup via CheckWX API
-[![wakatime](https://wakatime.com/badge/user/666e741f-f7db-42f4-a03b-a68a0094187d/project/03847307-86d5-4a5c-85b6-6982adcddf43.svg?style=for-the-badge)](https://wakatime.com/badge/user/666e741f-f7db-42f4-a03b-a68a0094187d/project/03847307-86d5-4a5c-85b6-6982adcddf43?style=for-the-badge)
+[![wakatime](https://wakatime.com/badge/user/666e741f-f7db-42f4-a03b-a68a0094187d/project/03847307-86d5-4a5c-85b6-6982adcddf43.svg?style=for-the-badge)](https://wakatime.com/badge/user/666e741f-f7db-42f4-a03b-a68a0094187d/project/03847307-86d5-4a5c-85b6-6982adcddf43?style=for-the-badge)  
+
 使用CheckWX API查询航空天气信息
 
 #### //TODO:
