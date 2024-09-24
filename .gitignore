@@ -8,3 +8,5 @@ api-key.txt
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/inspectionProfiles/Project_Default.xml
 .vscode/settings.json
+test.py
+response.json
