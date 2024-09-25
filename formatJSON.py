@@ -10,8 +10,11 @@ def print_format_metar():
         print(f"Time: {data['data'][i]['observed']}")
         print(f"Temperature: {data['data'][i]['temperature']['celsius']}°C")
         print(f"Dewpoint: {data['data'][i]['dewpoint']['celsius']}°C")
-        print(f"Wind: {data['data'][i]['wind']['degrees']}° at "
-              f"{data['data'][i]['wind']['speed_kts']} knots")
+        try:
+            print(f"Wind: {data['data'][i]['wind']['degrees']}° at "
+                  f"{data['data'][i]['wind']['speed_kts']} knots")
+        except KeyError:
+            print("Wind Calm")
         try:
             print("Clouds: ")
             print("+-----------------+")
