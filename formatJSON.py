@@ -3,6 +3,9 @@ import re
 import plotbarb
 
 
+wind_dir, wind_spd = -1, -1
+
+
 def print_format_metar():
     with open('response.json') as f:
         data = json.load(f)
@@ -18,7 +21,6 @@ def print_format_metar():
             # Calls the plot_bard function
             wind_dir = data['data'][i]['wind']['degrees']
             wind_spd = data['data'][i]['wind']['speed_kts']
-            plotbarb.plot_barb(wind_dir, wind_spd)
         except KeyError:
             print("Wind Calm")
         try:
@@ -56,6 +58,10 @@ def print_format_metar():
         print(f"Flight Category: {data['data'][i]['flight_category']}")
         print(f"Raw Report: {data['data'][i]['raw_text']}")
         print("\n")
+        try:
+            plotbarb.plot_barb(wind_dir, wind_spd)
+        except ValueError:
+            continue
 
 
 def format_taf():

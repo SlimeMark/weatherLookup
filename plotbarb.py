@@ -3,6 +3,9 @@ import numpy as np
 
 
 def plot_barb(wind_dir, wind_spd):
+    if wind_dir == -1 and wind_spd == -1:
+        raise ValueError("Wind direction and speed not provided, "
+                         "no plot will be shown.")
     u = wind_spd * np.sin(np.radians(wind_dir))
     v = wind_spd * np.cos(np.radians(wind_dir))
 
@@ -24,7 +27,7 @@ def plot_barb(wind_dir, wind_spd):
     ax.barbs(0, 0, u, v, length=15, pivot='middle', barbcolor=color,
              barb_increments=dict(half=5, full=10, flag=50), )
     ax.text(0.06, 0.04, f"{wind_spd} kts", color=color)
-    ax.text(0.06, 0.02, f"{wind_dir}°", color='darkgreen')
+    ax.text(0.06, 0.03, f"{wind_dir}°", color='darkgreen')
 
     bearing = plt.Circle((0, 0), 0.05, color='black', fill=False)
     ax.add_artist(bearing)
@@ -45,5 +48,6 @@ def plot_barb(wind_dir, wind_spd):
     for spine in ax.spines.values():
         spine.set_visible(False)
         ax.set_axis_off()
+
     plt.show()
 # TODO: Add runway direction inquiry and plot runways as well
