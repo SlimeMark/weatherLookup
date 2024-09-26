@@ -1,5 +1,6 @@
 import json
 import re
+import plotbarb
 
 
 def print_format_metar():
@@ -14,6 +15,10 @@ def print_format_metar():
         try:
             print(f"Wind: {data['data'][i]['wind']['degrees']}° at "
                   f"{data['data'][i]['wind']['speed_kts']} knots")
+            # Calls the plot_bard function
+            wind_dir = data['data'][i]['wind']['degrees']
+            wind_spd = data['data'][i]['wind']['speed_kts']
+            plotbarb.plot_barb(wind_dir, wind_spd)
         except KeyError:
             print("Wind Calm")
         try:
