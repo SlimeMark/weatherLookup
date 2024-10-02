@@ -18,7 +18,6 @@ def print_format_metar():
         try:
             print(f"Wind: {data['data'][i]['wind']['degrees']}° at "
                   f"{data['data'][i]['wind']['speed_kts']} knots")
-            # Calls the plot_bard function
             wind_dir = data['data'][i]['wind']['degrees']
             wind_spd = data['data'][i]['wind']['speed_kts']
         except KeyError:
@@ -64,6 +63,18 @@ def print_format_metar():
             continue
 
 
-def format_taf():
-    pass
-# TODO: TAF formatting, AIRMET/SIGMET formatting
+def print_format_taf():
+    with open('response.json') as f:
+        data = json.load(f)
+    for i in range(len(data['data'])):
+        print("Station: ", data['data'][i]['station']['name'])
+        print("Time issued: ", data['data'][i]['timestamp']['issued'])
+        print("Time from: ", data['data'][i]['timestamp']['from'])
+        print("Time to: ", data['data'][i]['timestamp']['to'])  
+
+        print(f"Raw Report: {data['data'][i]['raw_text']}")
+        print("\n")
+
+
+
+# TODO: TAF decoded information & AIRMET/SIGMET formatting
