@@ -11,3 +11,4 @@ api-key.txt
 test.py
 response.json
 /__pycache__
+/.idea
