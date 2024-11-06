@@ -10,6 +10,7 @@ def print_format_metar():
     with open('response.json') as f:
         data = json.load(f)
     for i in range(len(data['data'])):
+        raw = data['data'][i]['raw_text']
         print("\n")
         print(f"Station: {data['data'][i]['station']['name']}")
         print(f"Time: {data['data'][i]['observed']}")
@@ -33,14 +34,13 @@ def print_format_metar():
                                      key=lambda x: x[1], reverse=True):
                 print(f"{key} at {value[0]} feet AGL")
             print("+-----------------+")
-            raw = data['data'][i]['raw_text']
             if re.search('CB', raw):
                 print("Caution: CB reported")
             if re.search('TCU', raw):
                 print("Caution: TCU reported")
             print(f"Ceiling: {data['data'][i]['ceiling']['feet']} feet")
         except KeyError:
-            if not data['data'][i]['clouds']:
+            if not data['data'][i]['clouds'] or re.search('CAVOK', raw):
                 print("+------CAVOK------+")
                 print("+-----------------+")
             print("No ceiling reported")
